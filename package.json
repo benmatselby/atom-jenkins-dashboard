@@ -1,7 +1,7 @@
 {
   "name": "jenkins-dashboard",
   "main": "./lib/jenkins-dashboard",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "description": "Jenkins Dashboard integration",
   "repository": "https://github.com/benmatselby/atom-jenkins-dashboard",
@@ -9,6 +9,5 @@
   "engines": {
     "atom": ">0.50.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
