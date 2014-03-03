@@ -16,26 +16,30 @@ class JenkinsDashboardClient
         protocol = if url.protocol.indexOf(":") is -1 then url.protocol else url.protocol.substring(0, url.protocol.indexOf(":"))
         protocol = if protocol is "http" then http else https
 
-        protocol.get(@url + '/api/json', (res) ->
-            data = ''
-            res.on 'data', (chunk) ->
-                data += chunk.toString()
-            res.on 'end', ->
-                jobs = []
-                try
-                    jenkinsData = JSON.parse data
+        self = this
+        protocol.get @url + '/api/json', (reponse) ->
+            self.parseGetJenkinsDashboard reponse, callback
 
-                    for job in jenkinsData.jobs
-                        jobs.push job
+    # Parse the Jenkins output
+    # @param response The response from Jenkins
+    # @param callback The callback that will render the dashboard in UI
+    parseGetJenkinsDashboard: (response, callback) ->
+        data = ''
+        response.on 'data', (chunk) ->
+            data += chunk.toString()
+        response.on 'end', ->
+            jobs = []
+            try
 
-                    callback jobs
-                catch error
-                    console.error "[jenkins-dashboard] Error: #{error}"
-                    callback []
+                jenkinsData = JSON.parse data
 
-        ).on "error", (e) ->
-            console.error "[jenkins-dashboard] Error: " + e.message
-            callback []
+                for job in jenkinsData.jobs
+                    jobs.push job
+
+                callback jobs
+            catch error
+                console.error "[jenkins-dashboard] Error: #{error}"
+                callback []
 
 
 module.exports = JenkinsDashboardClient
