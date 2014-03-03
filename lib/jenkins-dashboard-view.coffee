@@ -33,36 +33,19 @@ class JenkinsDashboardView extends SelectListView
     buildName = item.name
     buildStatus = item.color
 
-    if buildStatus is "blue"
-      buildName += " [SUCCESS]"
-    else if buildStatus is "blue_anmie"
-      buildName += " [SUCCESS - BUILDING]"
-    else if buildStatus is "yellow"
-      buildName += " [UNSTABLE]"
-    else if buildStatus is "yellow_anmie"
-      buildName += " [UNSTABLE - BUILDING]"
-    else if buildStatus is "red"
-      buildName += " [FAILURE]"
-    else if buildStatus is "red_anmie"
-      buildName += " [FAILURE - BUILDING]"
-    else if buildStatus is "aborted"
-      buildName += " [ABORTED]"
-    else if buildStatus is "aborted_anime"
-      buildName += " [ABORTED - BUILDING]"
-    else if buildStatus is "disabled"
-      buildName += " [DISABLED]"
-    else if buildStatus is "notbuilt"
-      buildName += " [NO BUILDS]"
-    else
-      buildName += " [UNKNOWN]"
+    switch buildStatus
+      when "blue", "blue_anime" then status = 'green'
+      when "yellow", "yellow_anime" then status = 'yellow'
+      when "red", "red_anime" then status = 'red'
+      else status = 'aborted'
 
     $$ ->
       if buildName
-        @li class: 'jenkins-dashboard two-lines', =>
+        @li class: 'jenkins-dashboard jenkins-' + status, =>
           @div item, class: 'primary-line'
           @div buildName, class: 'secondary-line line-text'
       else
-        @li class: 'jenkins-dashboard', =>
+        @li class: 'jenkins-dashboard jenkins-' + status, =>
           @div item, class: 'primary-line'
 
   # Confirmed location
