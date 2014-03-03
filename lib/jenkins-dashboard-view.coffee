@@ -10,6 +10,10 @@ class JenkinsDashboardView extends SelectListView
     super
     @addClass('jenkins-dashboard-view overlay from-top')
 
+  # Getter for the property name to filter the list on
+  getFilterKey: ->
+    'name'
+
   # Show the dashboard in the list view
   # Show each jenksin job
   showDashboard: ->
