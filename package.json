@@ -1,6 +1,6 @@
 {
   "name": "jenkins-dashboard",
-  "main": "./lib/jenkins-dashboard",
+  "main": "./lib/main",
   "version": "0.2.0",
   "private": true,
   "description": "Jenkins Dashboard integration",
