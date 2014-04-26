@@ -1,6 +1,6 @@
 #Jenkins Dashboard
 
-This plugin aims to allow you to interact with a Jenkins installation from within the Sublime Text environment
+This plugin aims to allow you to interact with a Jenkins installation from within the [Atom](https://atom.io/) environment
 
 This is currently very much work in progress, see [here](https://github.com/benmatselby/atom-jenkins-dashboard/issues) for features/issues
 
