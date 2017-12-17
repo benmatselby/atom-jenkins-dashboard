@@ -1,4 +1,4 @@
-#Jenkins Dashboard
+# Jenkins Dashboard
 
 [![Build Status](https://travis-ci.org/benmatselby/atom-jenkins-dashboard.png?branch=master)](https://travis-ci.org/benmatselby/atom-jenkins-dashboard)
 
